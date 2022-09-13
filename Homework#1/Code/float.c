@@ -1,4 +1,6 @@
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define CONV(i) ((float)(i))
 
 void machar(int *ibeta, int *it, int *irnd, int *ngrd, int *machep, int *negep,
@@ -131,3 +133,30 @@ void machar(int *ibeta, int *it, int *irnd, int *ngrd, int *machep, int *negep,
 	}
 }
 #undef CONV
+
+int main() {
+	int *ibeta, *it, *irnd, *ngrd, *machep, *negep, *iexp, *minexp, *maxexp;
+	float *eps, *epsneg, *xmin, *xmax;
+
+	ibeta = malloc(sizeof(int));
+	it = malloc(sizeof(int));
+	irnd = malloc(sizeof(int));
+	ngrd = malloc(sizeof(int));
+	machep = malloc(sizeof(int));
+	negep = malloc(sizeof(int));
+	iexp = malloc(sizeof(int));
+	minexp = malloc(sizeof(int));
+	maxexp = malloc(sizeof(int));
+
+	eps = malloc(sizeof(float));
+	epsneg = malloc(sizeof(float));
+	xmin = malloc(sizeof(float));
+	xmax = malloc(sizeof(float));
+
+	machar(ibeta, it, irnd, ngrd, machep, negep, iexp, minexp, maxexp, eps, epsneg, xmin, xmax);
+
+	printf("machep: %d\n", *machep);
+	printf("machine accuracy = 2^(%d)\n", *machep);
+
+	return 0;
+}
