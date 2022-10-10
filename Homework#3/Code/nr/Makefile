@@ -1,4 +1,4 @@
-SRCS:=gaussj.c ludcmp.c nrutil.c svdcmp.c
+SRCS:=gaussj.c lubksb.c ludcmp.c nrutil.c svdcmp.c
 OBJS:=$(SRCS:.c=.o)
 STATIC_LIB:=libnr.a
 
