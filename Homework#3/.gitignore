@@ -1,4 +1,8 @@
 *.dSYM
 *.o
 *.a
+*.docx
 main
+problem1
+problem2
+problem3
