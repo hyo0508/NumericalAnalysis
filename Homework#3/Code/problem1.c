@@ -28,8 +28,6 @@ int main()
 
 void run_gaussj(const char *filename)
 {
-    printf("\n");
-    printf("gaussj\n");
     lineq_t *lineq;
     lineq = init_lineq(filename);
     print_lineq(lineq);
@@ -38,17 +36,16 @@ void run_gaussj(const char *filename)
 
     for (int i = 1; i <= lineq->cols; ++i)
         lineq->x[i] = lineq->B[i][1];
+    printf("gaussj: ");
     print_solution(lineq);
+
     free_lineq(lineq);
 }
 
 void run_ludcmp(const char *filename)
 {
-    printf("\n");
-    printf("ludcmp\n");
     lineq_t *lineq;
     lineq = init_lineq(filename);
-    print_lineq(lineq);
 
     int *indx;
     float *d;
@@ -60,17 +57,18 @@ void run_ludcmp(const char *filename)
 
     for (int i = 1; i <= lineq->cols; ++i)
         lineq->x[i] = lineq->b[i];
+    printf("ludcmp: ");
     print_solution(lineq);
+
+    free(d);
+    free(indx + 1);
     free_lineq(lineq);
 }
 
 void run_svdcmp(const char *filename)
 {
-    printf("\n");
-    printf("svdcmp\n");
     lineq_t *lineq;
     lineq = init_lineq(filename);
-    print_lineq(lineq);
 
     float *w;
     float **v;
@@ -83,6 +81,12 @@ void run_svdcmp(const char *filename)
     svdcmp(lineq->A, lineq->rows, lineq->cols, w, v);
     svbksb(lineq->A, w, v, lineq->rows, lineq->cols, lineq->b, lineq->x);
 
+    printf("svdcmp: ");
     print_solution(lineq);
+
+    for (int i = 1; i <= lineq->cols; ++i)
+        free(v[i] + 1);
+    free(v + 1);
+    free(w + 1);
     free_lineq(lineq);
 }

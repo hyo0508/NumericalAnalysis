@@ -78,6 +78,7 @@ void free_lineq(lineq_t *lineq)
 void print_lineq(lineq_t *lineq)
 {
     printf("\nA | b\n");
+    // printf("\nA\n");
     for (int i = 1; i <= lineq->rows; ++i)
     {
         for (int j = 1; j <= lineq->cols; ++j)
@@ -85,14 +86,19 @@ void print_lineq(lineq_t *lineq)
             printf("%20f", lineq->A[i][j]);
         }
         printf("\t| %20f\n", lineq->b[i]);
+        // printf("\n");
     }
 }
 
 void print_solution(lineq_t *lineq)
 {
-    printf("\nx\n");
+    printf("x = (");
     for (int i = 1; i <= lineq->cols; ++i)
     {
-        printf("%20f\n", lineq->x[i]);
+        printf("%f", lineq->x[i]);
+        if (i != lineq->cols)
+            printf(", ");
+        else
+            printf(")\n");
     }
 }
