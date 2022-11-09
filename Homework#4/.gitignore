@@ -1,0 +1,8 @@
+*.dSYM
+*.o
+*.a
+main
+uniform
+gaussian
+Report.docx
+~$Report.docx
