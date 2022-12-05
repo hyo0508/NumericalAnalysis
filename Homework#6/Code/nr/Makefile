@@ -1,4 +1,4 @@
-SRCS:=gaussj.c
+SRCS:=gaussj.c nrutil.c
 OBJS:=$(SRCS:.c=.o)
 STATIC_LIB:=libnr.a
 
