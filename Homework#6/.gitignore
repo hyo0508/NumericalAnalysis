@@ -1,0 +1,6 @@
+*.dSYM
+*.o
+*.a
+datafit
+Report.docx
+~$Report.docx
